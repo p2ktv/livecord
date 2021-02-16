@@ -19,7 +19,7 @@ Next thing is to click the "Manage" button of your new app in order to see the `
 
 4: **Set up the config file**
 
-Go into the `Cogs` directory open the `Config.py` file. There you need to pass in the requested tokens/secrets.
+Go into the `Cogs` directory and open the `Config.py` file. There you need to pass in the requested tokens/secrets.
 The file should look something like this:
 
 ```py
