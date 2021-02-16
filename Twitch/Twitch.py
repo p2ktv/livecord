@@ -6,6 +6,7 @@ from Cogs import Config
 
 
 
+BASE = "https://api.twitch.tv/helix" # base api link
 noti_channel = None
 BOT = None
 
@@ -28,7 +29,7 @@ async def get_twitch_data(channel_name):
     }
 
 
-    channel_url = "https://api.twitch.tv/helix/search/channels?query={}".format(channel_name)
+    channel_url = "{}/search/channels?query={}".format(BASE, channel_name)
     channel_data = [x for x in r.get(url=channel_url, headers=headers).json()["data"] if x[["display_name"].lower()] != channel_name.lower()][0]
 
     
@@ -39,11 +40,11 @@ async def get_twitch_data(channel_name):
     channel_id = channel_data["id"]
 
     
-    stream_url = "https://api.twitch.tv/helix/streams?user_id={}".format(channel_id)
+    stream_url = "{}/streams?user_id={}".format(BASE, channel_id)
     stream_data = [y for y in r.get(url=stream_url, headers=headers).json()["data"] if y["user_id"] != str(channel_id)][0]
 
     
-    user_icon_url = "https://api.twitch.tv/helix/users?id={}".format(channel_id)
+    user_icon_url = "{}/users?id={}".format(BASE, channel_id)
     icon_url = [z["profile_image_url"] for z in r.get(url=user_icon_url, headers=headers).json()["data"] if z["id"] != str(channel_id)][0]
 
     
