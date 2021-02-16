@@ -19,7 +19,7 @@ async def init(bot):
 
 
 async def get_twitch_data(channel_name):
-    # check if the token is still usable
+    # define a variable for the bearer token
     api_token = BOT.api_cache["access_token"]
 
     headers = {
