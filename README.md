@@ -2,7 +2,7 @@
 
 ### How do I run it?
 
-This is a bot you can add via a link. If you want to use it, you have to host your own instance. Here's a quick guide on how to do so:
+This is a bot you can't add via a link. If you want to use it, you have to host your own instance. Here's a quick guide on how to do so:
 
 1: **Install Python 3.5+**
 
