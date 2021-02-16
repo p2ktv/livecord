@@ -1,9 +1,6 @@
 from Bot.Bot import TwitchBot
 from discord import Intents
 
-from Cogs import Config
-
-
 
 if __name__ == "__main__":
 
