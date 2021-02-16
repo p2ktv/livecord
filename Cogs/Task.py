@@ -32,7 +32,7 @@ class Task(commands.Cog):
                     pass
             else:
                 self.bot.sent.append(c.lower())
-                embed = discord.Embed(color=0x6441a5, description="[**{}**](https://twitch.tv/{})".format(stream["title"], c.lower()))
+                embed = discord.Embed(color=0x6441a5, description="[{}](https://twitch.tv/{})".format(stream["title"], c.lower()))
 
                 embed.set_author(name="{}".format(c), icon_url=icon)
                 embed.set_thumbnail(url=icon)
