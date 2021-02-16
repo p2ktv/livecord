@@ -49,6 +49,7 @@ class TwitchBot(AutoShardedBot):
       
     def run(self):
         try:
+            self.remove_command("help")
             super().run(Config.TOKEN, reconnect=True)
         except Exception as e:
             print("Error in run() method, abording! \n{}".format(e))
