@@ -43,3 +43,12 @@ class TwitchBot(AutoShardedBot):
 
             print("Ready as {} ({})".format(self.user, self.user.id))
             self.READY = True
+        else:
+            pass
+        
+      
+    def run(self):
+        try:
+            super().run(Config.TOKEN, reconnect=True)
+        except Exception as e:
+            print("Error in run() method, abording! \n{}".format(e))
