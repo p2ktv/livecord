@@ -32,7 +32,7 @@ class TwitchBot(AutoShardedBot):
 
 
     async def on_ready(self):
-        while not self.READY:
+        if not self.READY:
             await Twitch.init(self)
             await API.get_bearer_token(self)
             for cog in cogs:
