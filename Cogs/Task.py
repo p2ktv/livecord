@@ -14,7 +14,7 @@ class Task(commands.Cog):
 
 
     async def check_channels(self):
-        await asyncio.sleep(10) # 10 sec cooldown
+        await asyncio.sleep(60) # 60 sec cooldown
 
         if len(self.bot.streams) < 1:
             return # we don't want to check anything if the channel list is empty
