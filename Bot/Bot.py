@@ -18,7 +18,7 @@ cogs = [
 
 class TwitchBot(AutoShardedBot):
     READY = False
-    api_cache = {}
+    api_cache = dict()
     streams = Config.STREAMERS
     sent = []
     def __init__(self, *args, loop=None, **kwargs):
