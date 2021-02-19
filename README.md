@@ -1,4 +1,4 @@
-# Twitch-Bot
+# Notification-Bot
 
 ### How do I run it?
 
