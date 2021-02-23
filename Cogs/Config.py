@@ -6,7 +6,7 @@ CLIENT_ID = "" # client ID of your Twitch App
 
 CLIENT_SECRET = "" # client secret of your Twitch App
 
-STREAMERS = ["xQcOW"] # list of channels you want to be notified about when they go live (seperate them by a comma)
+STREAMERS = ["xQcOW", "Streamer123"] # list of channels you want to be notified about when they go live (seperate them by a comma)
 
 # here you can pass in a message that'll be sent alngside with the live embed.
 # {streamer} means the name of the streamer that goes live
