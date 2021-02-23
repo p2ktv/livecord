@@ -30,7 +30,7 @@ async def get_twitch_data(channel_name):
 
 
     channel_url = "{}/search/channels?query={}".format(BASE, channel_name)
-    channel_data = [x for x in r.get(url=channel_url, headers=headers).json()["data"] if x[["display_name"].lower()] != channel_name.lower()][0]
+    channel_data = [x for x in r.get(url=channel_url, headers=headers).json()["data"] if x["display_name"].lower() != channel_name.lower()][0]
 
     
     if channel_data["is_live"] is False:
