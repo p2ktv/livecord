@@ -7,6 +7,19 @@ from Cogs import Config
 from Twitch.Twitch import noti_channel, get_twitch_data
 
 
+
+async def send_msg(c, stream, icon):
+    embed = discord.Embed(color=0x6441a5, description="[{}](https://twitch.tv/{})".format(stream["title"], c.lower()))
+
+    embed.set_author(name="{}".format(c), icon_url=icon)
+    embed.set_thumbnail(url=icon)
+    embed.set_image(url="https://static-cdn.jtvnw.net/previews-ttv/live_user_{}-{}x{}.jpg".format(c.lower(), 440, 248))
+    embed.add_field(name="Category/Game", value=stream["game_name"], inline=True)
+
+    await noti_channel.send(content=str(Config.MESSAGE).format(streamer=c, lower=c.lower()), embed=embed)
+
+
+    
 class Task(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -23,23 +36,16 @@ class Task(commands.Cog):
 
         for c in self.bot.streams:
             channel, stream, icon = await get_twitch_data(c)
-            if channel is None:
-                pass
-            if c.lower() in self.bot.sent:
-                if stream["is_live"] is False:
-                    self.bot.sent.remove(c.lower())
+            if channel is not None: 
+                if c.lower() in self.bot.sent:
+                    if stream["is_live"] is False:
+                        self.bot.sent.remove(c.lower())
+                    else:
+                        pass
                 else:
-                    pass
-            else:
-                self.bot.sent.append(c.lower())
-                embed = discord.Embed(color=0x6441a5, description="[{}](https://twitch.tv/{})".format(stream["title"], c.lower()))
-
-                embed.set_author(name="{}".format(c), icon_url=icon)
-                embed.set_thumbnail(url=icon)
-                embed.set_image(url="https://static-cdn.jtvnw.net/previews-ttv/live_user_{}-{}x{}.jpg".format(c.lower(), 440, 248))
-                embed.add_field(name="Category/Game", value=stream["game_name"], inline=True)
-
-                await noti_channel.send(content=str(Config.MESSAGE).format(streamer=c, lower=c.lower()), embed=embed)
+                    self.bot.sent.append(c.lower())
+                    await send_msg(c, stream, icon)
+            
 
 
 
