@@ -2,11 +2,11 @@
 
 ### How do I run it?
 
-This is a bot you can't add via a link. If you want to use it, you have to host your own instance. Here's a quick guide on how to do so:
+This isn't a public bot. If you want to use it, you have to host your own instance. Here's a quick guide on how to do so:
 
 1: **Install Python 3.5+**
 
-You need the Python version in order to actually run an instance of the bot
+You need this Python version in order to actually run an instance of the bot
 
 2: **Install the dependencies**
 
