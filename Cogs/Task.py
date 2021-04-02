@@ -37,15 +37,16 @@ class Task(commands.Cog):
         for c in self.bot.streams:
             channel, stream, icon = await get_twitch_data(c)
             if channel is not None: 
-                if c.lower() in self.bot.sent:
-                    if stream["is_live"] is False:
-                        self.bot.sent.remove(c.lower())
-                    else:
-                        pass
-                else:
-                    self.bot.sent.append(c.lower())
+                if not c.lower() in self.bot.sent():
                     await send_msg(c, stream, icon)
-            
+                    self.bot.sent.append(c.lower())
+                else:
+                    pass
+            else:
+                if c.lower() in self.bot.sent():
+                    self.bot.sent.remove(c.lower())
+                else:
+                    pass
 
 
 
