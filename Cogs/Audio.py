@@ -47,7 +47,7 @@ class Audio(commands.Cog):
         query = "https://twitch.tv/" + url.path.strip("/")
         tracks = await self.bot.wavelink.get_tracks(query)
         if not tracks:
-            return await ctx.send("This use is either doesn't exist or isn't streaming")
+            return await ctx.send("This user either doesn't exist or isn't streaming")
         
         player = self.bot.wavelink.get_player(ctx.guild.id)
         if not player.is_connected:
@@ -59,7 +59,7 @@ class Audio(commands.Cog):
         await ctx.invoke(self.nowplaying)
 
 
-    @commands.command(aliases=["stop", "dc", "disconnect"])
+    @commands.command(aliases=["stop", "dc"])
     async def leave(self, ctx):
         player = self.bot.wavelink.get_player(ctx.guild.id)
         await player.disconnect()
@@ -68,10 +68,10 @@ class Audio(commands.Cog):
             await ctx.guild.voice_client.disconnect()
         except AttributeError:
             pass
-        await ctx.send("Left the voice channel.")
+        await ctx.send("And I'm gone again.")
 
     
-    @commands.command(aliases=["np", "playing"])
+    @commands.command()
     async def nowplaying(self, ctx):
         player = self.bot.wavelink.get_player(ctx.guild.id)
         if not player.is_connected:
