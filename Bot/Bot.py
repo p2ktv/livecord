@@ -86,7 +86,7 @@ class Livecord(AutoShardedBot):
         if isinstance(error, commands.CommandInvokeError):
             error = error.original
         if isinstance(error, commands.MissingRequiredArgument):
-            return await ctx.send(f"You're missing the `{}` parameter".format(getattr(error, "param", None)))   
+            return await ctx.send("You're missing the `{}` parameter".format(getattr(error, "param", None)))   
         
       
     def run(self):
