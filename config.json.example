@@ -1,0 +1,12 @@
+{
+    "token": "",
+    "mongo": "",
+
+    "client_secret": "",
+    "client_id": "",
+
+    "lavalink_host": "",
+    "lavalink_port": 1234,
+    "lavalink_password": "",
+    "lavalink_identifier": ""
+}
