@@ -1,16 +1,10 @@
-from Bot.Bot import Livecord
 from discord import Intents
 from discord.ext import commands
-import importlib
+
 import json
 import logging
 
-
-class LogFilter(logging.Filter):
-    black_list = ["unknown event", "unknown member id"]
-
-    def filter(self, record):
-        return not any([m in record.msg.lower() for m in self.black_list])
+from Bot.Bot import Livecord
 
 
 
@@ -22,8 +16,6 @@ def log_setup():
     )
     logging.captureWarnings(True)
     log = logging.getLogger("livecord")
-    gateway_log = logging.getLogger("discord.gateway")
-    gateway_log.addFilter(LogFilter())
 
 
 if __name__ == "__main__":
