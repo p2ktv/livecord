@@ -21,7 +21,7 @@ async def handle_notifications(bot):
                     status, s_data = await helpers.is_live(bot, entry['user'])
                     if status is True:
 
-                        if not entry['user'] in bot.sent_notification:
+                        if not entry['user'] in bot.sent_notifications:
                             
                             # get user data
                             u_data = await bot.twitch_http.get("/users", {"login": entry['user']})
@@ -60,10 +60,10 @@ async def handle_notifications(bot):
                                 channel = await bot.fetch_channel(int(entry['channel']))
                                 await channel.send(content=entry['message'], embed=e)
                             finally:
-                                bot.sent_notification.append(entry['user'])
+                                bot.sent_notifications.append(entry['user'])
                     else:
-                        if entry['user'] in bot.sent_notification:
-                            bot.sent_notification.remove(entry['user'])
+                        if entry['user'] in bot.sent_notifications:
+                            bot.sent_notifications.remove(entry['user'])
 
 
 

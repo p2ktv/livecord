@@ -35,7 +35,7 @@ class Livecord(AutoShardedBot):
     def __init__(self, *args, config, **kwargs):
         super().__init__(*args, **kwargs)
         
-        self.sent_notification = []
+        self.sent_notifications = []
         self.loop.create_task(handler.handle_notifications(self))
         self.config = config
         self.color = 0x9146ff
@@ -79,6 +79,14 @@ class Livecord(AutoShardedBot):
             self.READY = True
         else:
             pass
+
+    async def on_command_error(self, ctx, error):
+        if isinstance(error, commands.CommandNotFound):
+            return
+        if isinstance(error, commands.CommandInvokeError):
+            error = error.original
+        if isinstance(error, commands.MissingRequiredArgument):
+            return await ctx.send(f"You're missing the `{}` parameter".format(getattr(error, "param", None)))   
         
       
     def run(self):
