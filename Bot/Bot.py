@@ -46,7 +46,6 @@ class Livecord(AutoShardedBot):
         self.uptime = None
         self.twitch_http = http.TwitchHTTP(self)
         self.db = mongo.Mongo(self)
-        #self.cluster_index = round(min(self.shard_ids) / 5)
 
 
     
@@ -58,8 +57,6 @@ class Livecord(AutoShardedBot):
 
     async def on_ready(self):
         if not self.READY:
-            #await Twitch.init(self)
-            #await API.get_bearer_token(self)
             for cog in cogs:
                 try:
                     self.load_extension("Cogs.{}".format(cog))
