@@ -1,2 +1,2 @@
 # Live
-Live notification Discord bot I made for fun
+Discord bot that sends out notifications when a Twitch streamer goes live
